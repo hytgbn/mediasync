@@ -16,11 +16,19 @@ Any files starting with dot(`.`) will not be transferred and any folders are ign
 
 During initial configuration, **mediasync** will generate ssh key and `ssh-copy-id` its public key to server for passwordless rsync operations. You'll be asked to enter password when **mediasync** container copies the public key to the server.
 
-The ssh key will be stored in `/var/keys/` volume.
+The ssh key will be stored in docker volume mounted at `/var/keys/`.
 
 
+# Usage
 
-# Usaage
+
+### Pull image
+
+```
+
+docker pull hytgbn/mediasync:latest
+
+```
 
 ### Initial configuration
 
@@ -32,9 +40,8 @@ Env variables **mediasync** uses:
 
 ```
 
-docker run -it -e DEST_USER=<user> -e DEST_SERVER=<addr> -e DEST_PATH=<path> --mount type=bind,source=<host directory>,target=/mediadir --name mediasync mediasync:latest
+docker run -it -e DEST_USER=<user> -e DEST_SERVER=<addr> -e DEST_PATH=<path> --mount type=bind,source=<host directory>,target=/mediadir --name mediasync hytgbn/mediasync:latest
 
-#TODO make docker repo public
 
 ```
 
