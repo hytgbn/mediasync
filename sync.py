@@ -21,8 +21,6 @@ logger = get_logger()
 SRC_DIR = "/mediadir"
 LOCK_FILE = ".lock"
 
-EXCLUDES = ["sync.py", "sync.sh", ".lock"]
-
 class FileSnapshot:
     """
     Snapshot of a file.
@@ -59,8 +57,6 @@ def get_snapshots(root):
     for f in os.listdir(root):
         filepath = os.path.join(root, f)
         if os.path.isfile(filepath):
-            if f in EXCLUDES:
-                continue
             if f.startswith("."):
                 continue
             snapshot = FileSnapshot(filepath)
