@@ -12,6 +12,8 @@ env variables
 
 Note that this deletes files from source.
 
+## Build
+
 ### Initial configuration
 
 
@@ -32,5 +34,20 @@ You can set up a schedule task, e.g. cron, with below command.
 ```
 
 docker start mediasync
+
+```
+
+
+## DockerHub
+
+### Build and push
+
+```
+
+# Currently privrepo is my private repository
+
+docker build  --tag mediasync .
+docker tag mediasync hytgbn/privrepo:mediasync
+docker push hytgbn/privrepo:mediasync
 
 ```
